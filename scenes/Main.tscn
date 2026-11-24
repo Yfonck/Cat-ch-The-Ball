@@ -1,0 +1,142 @@
+[gd_scene format=3 uid="uid://drohqebt6tah7"]
+
+[ext_resource type="Script" uid="uid://bmyc8n6f0bcfx" path="res://scripts/Main.gd" id="1_c01mt"]
+[ext_resource type="Script" uid="uid://h3wiyyts4ju" path="res://scripts/ball.gd" id="2_nxtc6"]
+[ext_resource type="Script" uid="uid://d0fis3yelwolo" path="res://scripts/cat.gd" id="4_q8u5g"]
+[ext_resource type="Script" uid="uid://dbhdea4dvhgh5" path="res://scripts/HitArea.gd" id="6_wp0k4"]
+[ext_resource type="SpriteFrames" path="res://assets/gato_spriteframes.tres" id="7_gato"]
+[ext_resource type="SpriteFrames" path="res://assets/pelota_spriteframes.tres" id="8_pelota"]
+[ext_resource type="FontFile" uid="uid://cphpvvx4fqilg" path="res://fonts/PatrickHand-Regular.ttf" id="8_q8u5g"]
+[ext_resource type="FontFile" uid="uid://vf5whfdu2jt5" path="res://fonts/Baloo-Regular.ttf" id="9_lhr70"]
+[ext_resource type="Texture2D" uid="uid://dfmg74uv2fhkc" path="res://assets/Sala de Juegos Acogedora para Gatitos.png" id="9_room"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1y5my"]
+radius = 16.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1y5my"]
+size = Vector2(40, 50)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3ongf"]
+radius = 22.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ongf"]
+size = Vector2(46, 47)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5vdf5"]
+size = Vector2(640, 40)
+
+[node name="Main" type="Node2D" unique_id=1441092463]
+script = ExtResource("1_c01mt")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1441092464]
+position = Vector2(320, 480)
+scale = Vector2(0.68, 0.68)
+texture = ExtResource("9_room")
+
+[node name="Ball" type="CharacterBody2D" parent="." unique_id=2100285913]
+position = Vector2(320, 120)
+script = ExtResource("2_nxtc6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball" unique_id=1447862489]
+shape = SubResource("CircleShape2D_1y5my")
+
+[node name="Visual" type="AnimatedSprite2D" parent="Ball" unique_id=243767913]
+position = Vector2(-11.233968, -8.886478)
+scale = Vector2(0.41458645, 0.41587833)
+sprite_frames = ExtResource("8_pelota")
+animation = &"spin"
+autoplay = "spin"
+offset = Vector2(16, 16)
+
+[node name="Cat" type="CharacterBody2D" parent="." unique_id=907858579]
+position = Vector2(320, 860)
+script = ExtResource("4_q8u5g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cat" unique_id=1302900787]
+shape = SubResource("RectangleShape2D_1y5my")
+
+[node name="Visual" type="AnimatedSprite2D" parent="Cat" unique_id=2011356976]
+position = Vector2(-1, -37)
+scale = Vector2(0.63541657, 0.703125)
+sprite_frames = ExtResource("7_gato")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="HeadArea" type="Area2D" parent="Cat" unique_id=1769774266]
+position = Vector2(7, -46)
+collision_layer = 0
+script = ExtResource("6_wp0k4")
+target_method = &"_on_head_area_body_entered"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cat/HeadArea" unique_id=928779388]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_3ongf")
+
+[node name="BodyArea" type="Area2D" parent="Cat" unique_id=1910226239]
+position = Vector2(0, 14)
+collision_layer = 0
+script = ExtResource("6_wp0k4")
+target_method = &"_on_body_area_body_entered"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cat/BodyArea" unique_id=887007204]
+position = Vector2(4, 1)
+shape = SubResource("RectangleShape2D_3ongf")
+
+[node name="Ground" type="StaticBody2D" parent="." unique_id=1361421927]
+position = Vector2(320, 880)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=594328779]
+position = Vector2(1, 38)
+shape = SubResource("RectangleShape2D_5vdf5")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1690276741]
+
+[node name="ScoreLabel" type="Label" parent="UI" unique_id=389833596]
+unique_name_in_owner = true
+offset_right = 260.0
+offset_bottom = 36.0
+theme_override_colors/font_color = Color(1, 0.98, 0.93, 1)
+theme_override_colors/font_outline_color = Color(0.23, 0.14, 0.08, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("8_q8u5g")
+theme_override_font_sizes/font_size = 36
+text = "Score: 0"
+metadata/_edit_use_anchors_ = true
+
+[node name="HighScoreLabel" type="Label" parent="UI" unique_id=158513356]
+unique_name_in_owner = true
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -300.0
+offset_bottom = 36.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(1, 0.98, 0.93, 1)
+theme_override_colors/font_outline_color = Color(0.23, 0.14, 0.08, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("8_q8u5g")
+theme_override_font_sizes/font_size = 36
+text = "Top Score: 0"
+horizontal_alignment = 2
+
+[node name="GameOverLabel" type="Label" parent="UI" unique_id=158513355]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -80.0
+offset_right = 220.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.98, 0.93, 1)
+theme_override_colors/font_outline_color = Color(0.23, 0.14, 0.08, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("9_lhr70")
+theme_override_font_sizes/font_size = 48
+text = "¡Game Over!"
+horizontal_alignment = 1
+vertical_alignment = 1

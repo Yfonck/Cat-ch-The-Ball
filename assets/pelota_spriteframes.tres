@@ -1,0 +1,74 @@
+[gd_resource type="SpriteFrames" load_steps=17 format=3]
+
+[ext_resource type="Texture2D" uid="uid://bxj2dyj7gge2w" path="res://assets/pelota_giro_16_frames/pelota_giro_01.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://cuj8ys2naktib" path="res://assets/pelota_giro_16_frames/pelota_giro_02.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://dy3b4xhugof04" path="res://assets/pelota_giro_16_frames/pelota_giro_03.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://ydqsgbx6o63o" path="res://assets/pelota_giro_16_frames/pelota_giro_04.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://crneoqd4pxi1r" path="res://assets/pelota_giro_16_frames/pelota_giro_05.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://blggq1b0btm1u" path="res://assets/pelota_giro_16_frames/pelota_giro_06.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://c0jluc77t3usl" path="res://assets/pelota_giro_16_frames/pelota_giro_07.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://bdp4trbw68se4" path="res://assets/pelota_giro_16_frames/pelota_giro_08.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://br5to2ejuuxbg" path="res://assets/pelota_giro_16_frames/pelota_giro_09.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://cj6khom26nocx" path="res://assets/pelota_giro_16_frames/pelota_giro_10.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://bdlq4qje83v48" path="res://assets/pelota_giro_16_frames/pelota_giro_11.png" id="11"]
+[ext_resource type="Texture2D" uid="uid://b0c7cp6is2w22" path="res://assets/pelota_giro_16_frames/pelota_giro_12.png" id="12"]
+[ext_resource type="Texture2D" uid="uid://c0ibf2gc5r4v" path="res://assets/pelota_giro_16_frames/pelota_giro_13.png" id="13"]
+[ext_resource type="Texture2D" uid="uid://bdwo2eenji0wi" path="res://assets/pelota_giro_16_frames/pelota_giro_14.png" id="14"]
+[ext_resource type="Texture2D" uid="uid://3d2esqepyejj" path="res://assets/pelota_giro_16_frames/pelota_giro_15.png" id="15"]
+[ext_resource type="Texture2D" uid="uid://ee4gs8hqqbqi" path="res://assets/pelota_giro_16_frames/pelota_giro_16.png" id="16"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16")
+}],
+"loop": true,
+"name": &"spin",
+"speed": 20.0
+}]
