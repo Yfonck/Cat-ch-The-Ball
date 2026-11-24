@@ -147,11 +147,13 @@ theme_override_font_sizes/font_size = 22
 text = "HOW TO PLAY
 
 • The ball falls from above.
-• If it touches the cat on the ground, you lose.
-• Press SHIFT to jump.
+• If the ball hits the ground, you lose a life.
+• You have 3 lives.
+• Press SHIFT to leap to the other side.
+• Your cat flips automatically when landing.
 • If the cat's head hits the ball, it bounces and you earn 1 point.
-• The speed increases with each point.
-• The challenge is timing your jump just right.
+• The ball and the cat speed up with each point.
+• The challenge is timing your leap just right.
 
 SHIFT restarts after losing.
 ESCAPE returns to the menu.

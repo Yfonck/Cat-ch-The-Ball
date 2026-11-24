@@ -9,6 +9,8 @@
 [ext_resource type="FontFile" uid="uid://cphpvvx4fqilg" path="res://fonts/PatrickHand-Regular.ttf" id="8_q8u5g"]
 [ext_resource type="FontFile" uid="uid://vf5whfdu2jt5" path="res://fonts/Baloo-Regular.ttf" id="9_lhr70"]
 [ext_resource type="Texture2D" uid="uid://dfmg74uv2fhkc" path="res://assets/Sala de Juegos Acogedora para Gatitos.png" id="9_room"]
+[ext_resource type="Texture2D" uid="uid://6hfrcxx8jdss" path="res://assets/heart_full.png" id="10_heart"]
+[ext_resource type="Texture2D" uid="uid://b6q20liodgcmg" path="res://assets/game_over.png" id="11_gameover"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1y5my"]
 radius = 16.0
@@ -18,9 +20,6 @@ size = Vector2(40, 50)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3ongf"]
 radius = 22.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ongf"]
-size = Vector2(46, 47)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5vdf5"]
 size = Vector2(640, 40)
@@ -49,7 +48,7 @@ autoplay = "spin"
 offset = Vector2(16, 16)
 
 [node name="Cat" type="CharacterBody2D" parent="." unique_id=907858579]
-position = Vector2(320, 860)
+position = Vector2(120, 873)
 script = ExtResource("4_q8u5g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cat" unique_id=1302900787]
@@ -71,16 +70,6 @@ target_method = &"_on_head_area_body_entered"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cat/HeadArea" unique_id=928779388]
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_3ongf")
-
-[node name="BodyArea" type="Area2D" parent="Cat" unique_id=1910226239]
-position = Vector2(0, 14)
-collision_layer = 0
-script = ExtResource("6_wp0k4")
-target_method = &"_on_body_area_body_entered"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cat/BodyArea" unique_id=887007204]
-position = Vector2(4, 1)
-shape = SubResource("RectangleShape2D_3ongf")
 
 [node name="Ground" type="StaticBody2D" parent="." unique_id=1361421927]
 position = Vector2(320, 880)
@@ -119,6 +108,68 @@ theme_override_font_sizes/font_size = 36
 text = "Top Score: 0"
 horizontal_alignment = 2
 
+[node name="LivesContainer" type="HBoxContainer" parent="UI" unique_id=1690276742]
+unique_name_in_owner = true
+offset_left = 16.0
+offset_top = 52.0
+offset_right = 140.0
+offset_bottom = 86.0
+theme_override_constants/separation = 6
+
+[node name="Heart1" type="TextureRect" parent="UI/LivesContainer" unique_id=1690276743]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("10_heart")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Heart2" type="TextureRect" parent="UI/LivesContainer" unique_id=1690276744]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("10_heart")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Heart3" type="TextureRect" parent="UI/LivesContainer" unique_id=1690276745]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("10_heart")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GameOverOverlay" type="ColorRect" parent="UI" unique_id=1690276746]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.1, 0.07, 0.05, 0.45)
+
+[node name="GameOverBanner" type="TextureRect" parent="UI" unique_id=1690276747]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -300.0
+offset_right = 250.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("11_gameover")
+expand_mode = 1
+stretch_mode = 5
+
 [node name="GameOverLabel" type="Label" parent="UI" unique_id=158513355]
 unique_name_in_owner = true
 anchors_preset = 8
@@ -126,17 +177,21 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -220.0
-offset_top = -80.0
-offset_right = 220.0
-offset_bottom = 80.0
+offset_left = -280.0
+offset_top = 0.0
+offset_right = 280.0
+offset_bottom = 320.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 0.98, 0.93, 1)
 theme_override_colors/font_outline_color = Color(0.23, 0.14, 0.08, 1)
 theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("9_lhr70")
-theme_override_font_sizes/font_size = 48
-text = "¡Game Over!"
+theme_override_font_sizes/font_size = 36
+text = ""
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="BallResetTimer" type="Timer" parent="." unique_id=1690276748]
+wait_time = 0.6
+one_shot = true

@@ -11,9 +11,12 @@ signal game_over
 var current_speed_multiplier: float = 1.0
 var is_active: bool = true
 
+var _start_position: Vector2
+
 @onready var visual: Node = get_node_or_null("Visual")
 
 func _ready() -> void:
+	_start_position = position
 	if visual is AnimatedSprite2D and visual.sprite_frames:
 		if visual.sprite_frames.has_animation("spin"):
 			visual.play("spin")
@@ -34,6 +37,14 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		is_active = false
 		game_over.emit()
+
+func reset_ball() -> void:
+	position = _start_position
+	velocity = Vector2.ZERO
+	is_active = true
+	if visual is AnimatedSprite2D and visual.sprite_frames:
+		if visual.sprite_frames.has_animation("spin"):
+			visual.play("spin")
 
 func bounce() -> void:
 	if not is_active:

@@ -1,8 +1,9 @@
 # Cat-ch the Ball
 
-Juego 2D para **Godot 4.7** (GL Compatibility). Un gatito debe saltar y golpear
-la pelota con la cabeza para mantenerla en el aire. Cada punto acelera la
-pelota. Si la pelota toca al gato cuando está en el suelo, pierdes.
+Juego 2D para **Godot 4.7** (GL Compatibility). Un gatito salta de un lado al
+otro golpeando la pelota con la cabeza para mantenerla en el aire. Cada punto
+acelera la pelota y al gato. Si la pelota toca el suelo, pierdes una vida;
+tienes 3.
 
 El récord de puntos se guarda entre sesiones y el juego incluye música y
 efectos de sonido.
@@ -17,7 +18,7 @@ efectos de sonido.
 
 | Acción | Tecla |
 |---|---|
-| Saltar / reiniciar tras perder | **Shift** |
+| Saltar al lado opuesto / reiniciar tras perder | **Shift** |
 | Volver al menú / cerrar instrucciones | **Escape** |
 
 ## Récord
@@ -68,9 +69,15 @@ tools/
 
 ## Mecánicas
 
-- El gato salta al pulsar **Shift**.
-- Si la cabeza del gato golpea la pelota mientras sube, la pelota rebota,
-  ganas 1 punto y la velocidad aumenta (hasta 3×).
-- Si la pelota toca el cuerpo del gato con el gato en el suelo, la partida
-  termina.
-- La velocidad afecta a la gravedad y a la fuerza de rebote de la pelota.
+- El gato empieza a la izquierda y, al pulsar **Shift**, salta en arco al lado
+  opuesto.
+- Al aterrizar se voltea automáticamente, listo para saltar de vuelta. Los
+  saltos alternan izquierda/derecha.
+- Si la cabeza del gato golpea la pelota, la pelota rebota, ganas 1 punto y
+  tanto la pelota como el gato aceleran (la pelota hasta 3× y el gato hasta
+  ~1,8×).
+- Tienes **3 vidas** (los iconos de vida del HUD). Cada vez que la pelota toca el
+  suelo pierdes una vida y la pelota vuelve a caer desde arriba. Cuando se
+  agotan las 3, aparece el cartel de game over.
+- La velocidad afecta a la gravedad, la fuerza de rebote de la pelota y la
+  rapidez de los saltos del gato.

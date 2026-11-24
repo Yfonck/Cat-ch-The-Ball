@@ -17,7 +17,7 @@ func save_record() -> void:
 	config.set_value("record", "high_score", high_score)
 	var err := config.save(SAVE_PATH)
 	if err != OK:
-		push_warning("No se pudo guardar el récord en %s (error %d)." % [SAVE_PATH, err])
+		push_warning("Could not save the record to %s (error %d)." % [SAVE_PATH, err])
 
 func submit_score(points: int) -> bool:
 	if points <= high_score:
