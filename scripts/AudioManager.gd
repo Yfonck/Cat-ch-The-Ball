@@ -2,7 +2,7 @@ extends Node
 
 const SFX := {
 	&"click": preload("res://assets/audio/ui_click.wav"),
-	&"jump": preload("res://assets/audio/cat_jump.wav"),
+	&"jump": preload("res://assets/audio/cat_jumps.wav"),
 	&"bounce": preload("res://assets/audio/ball_bounce.wav"),
 	&"game_over": preload("res://assets/audio/game_over.wav"),
 }

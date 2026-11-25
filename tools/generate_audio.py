@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Genera los audios placeholder de Cat-ch the Ball (WAV mono 44.1 kHz / 16 bits).
+"""Generates the Cat-ch the Ball placeholder audio (mono WAV, 44.1 kHz / 16-bit).
 
-Uso:
+Usage:
     python tools/generate_audio.py
 
-Los archivos se escriben en assets/audio/ y pueden sustituirse por audios
-reales conservando los nombres.
+Files are written to assets/audio/ and can be replaced with real audio while
+keeping the same filenames.
 """
 
 import math
@@ -26,7 +26,7 @@ NOTE_OFFSETS = {
 
 
 def note_freq(name):
-    """Convierte 'A4', 'C#5', etc. a frecuencia en Hz."""
+    """Converts 'A4', 'C#5', etc. to a frequency in Hz."""
     if len(name) == 3:
         pitch, octave = name[:2], int(name[2])
     else:
@@ -234,14 +234,14 @@ def gen_music_game():
 
 def main():
     os.makedirs(OUT_DIR, exist_ok=True)
-    print("Generando audios en {0}".format(OUT_DIR))
+    print("Generating audio in {0}".format(OUT_DIR))
     write_wav("ui_click.wav", gen_click())
-    write_wav("cat_jump.wav", gen_cat_jump())
+    write_wav("cat_jumps.wav", gen_cat_jump())
     write_wav("ball_bounce.wav", gen_bounce())
     write_wav("game_over.wav", gen_game_over())
     write_wav("music_menu.wav", gen_music_menu())
     write_wav("music_game.wav", gen_music_game())
-    print("Listo.")
+    print("Done.")
 
 
 if __name__ == "__main__":

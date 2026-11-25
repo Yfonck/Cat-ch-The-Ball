@@ -1,8 +1,8 @@
 extends Control
 
-@onready var play_button: TextureButton = $MenuPanel/VBoxContainer/PlayButton
-@onready var instructions_button: TextureButton = $MenuPanel/VBoxContainer/InstructionsButton
-@onready var quit_button: TextureButton = $MenuPanel/VBoxContainer/QuitButton
+@onready var play_button: Button = $MenuPanel/VBoxContainer/PlayButton
+@onready var instructions_button: Button = $MenuPanel/VBoxContainer/InstructionsButton
+@onready var quit_button: Button = $MenuPanel/VBoxContainer/QuitButton
 @onready var record_label: Label = $RecordLabel
 @onready var instructions_panel: PanelContainer = $InstructionsPanel
 @onready var close_button: Button = $InstructionsPanel/VBoxContainer/CloseButton
@@ -20,9 +20,10 @@ func _ready() -> void:
 	record_label.text = "Top Score: %d" % GameState.high_score
 	AudioManager.play_music(&"menu")
 
-	_register_texture_button(play_button)
-	_register_texture_button(instructions_button)
-	_register_texture_button(quit_button)
+	_register_button(play_button)
+	_register_button(instructions_button)
+	_register_button(quit_button)
+	_register_button(close_button)
 
 	play_button.pressed.connect(_on_play_pressed)
 	instructions_button.pressed.connect(_on_instructions_pressed)
@@ -31,7 +32,7 @@ func _ready() -> void:
 
 	play_button.grab_focus()
 
-func _register_texture_button(button: TextureButton) -> void:
+func _register_button(button: Button) -> void:
 	button.focus_mode = Control.FOCUS_ALL
 	button.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 	_button_states[button] = {"hover": false, "focus": false, "pressed": false}
@@ -43,7 +44,7 @@ func _register_texture_button(button: TextureButton) -> void:
 	button.button_down.connect(_set_button_state.bind(button, "pressed", true))
 	button.button_up.connect(_set_button_state.bind(button, "pressed", false))
 
-func _set_button_state(button: TextureButton, key: String, active: bool) -> void:
+func _set_button_state(button: Button, key: String, active: bool) -> void:
 	if not _button_states.has(button):
 		return
 
